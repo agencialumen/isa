@@ -6,18 +6,33 @@ import { Send, Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
+// Configuração centralizada - fácil de editar
+const CHAT_CONFIG = {
+  profileImage: "/images/profile-avatar.jpg",
+  title: "Chat Exclusivo",
+  subtitle: "Disponível para assinantes",
+  lockMessage: {
+    title: "Chat bloqueado",
+    description:
+      "Assine um dos nossos planos para desbloquear o chat e conversar diretamente comigo. Respondo todas as mensagens pessoalmente!",
+    buttonText: "ASSINAR PARA DESBLOQUEAR",
+  },
+  inputPlaceholder: "Mensagem bloqueada. Assine para conversar...",
+}
+
 export function ChatPreview() {
   const [message, setMessage] = useState("")
+  const { profileImage, title, subtitle, lockMessage, inputPlaceholder } = CHAT_CONFIG
 
   return (
     <div className="bg-zinc-800/30 rounded-xl overflow-hidden h-[600px] flex flex-col">
       <div className="p-4 border-b border-zinc-700 bg-zinc-800/50 flex items-center gap-3">
         <div className="relative h-10 w-10 rounded-full overflow-hidden">
-          <Image src="/images/profile-avatar.jpg" alt="Profile" fill className="object-cover" />
+          <Image src={profileImage || "/placeholder.svg"} alt="Profile" fill className="object-cover" />
         </div>
         <div>
-          <h3 className="font-medium text-white">Chat Exclusivo</h3>
-          <p className="text-zinc-400 text-xs">Disponível para assinantes</p>
+          <h3 className="font-medium text-white">{title}</h3>
+          <p className="text-zinc-400 text-xs">{subtitle}</p>
         </div>
       </div>
 
@@ -34,17 +49,14 @@ export function ChatPreview() {
             <Lock className="h-12 w-12 text-zinc-300" />
           </div>
 
-          <h3 className="text-xl font-medium text-white mb-3">Chat bloqueado</h3>
-          <p className="text-zinc-400 mb-6">
-            Assine um dos nossos planos para desbloquear o chat e conversar diretamente comigo. Respondo todas as
-            mensagens pessoalmente!
-          </p>
+          <h3 className="text-xl font-medium text-white mb-3">{lockMessage.title}</h3>
+          <p className="text-zinc-400 mb-6">{lockMessage.description}</p>
 
           <Button
             size="lg"
             className="bg-gradient-to-r from-rose-500 to-red-500 hover:from-rose-600 hover:to-red-600 text-white font-medium transition-all duration-300 w-full"
           >
-            ASSINAR PARA DESBLOQUEAR
+            {lockMessage.buttonText}
           </Button>
         </motion.div>
       </div>
@@ -53,7 +65,7 @@ export function ChatPreview() {
         <div className="relative">
           <input
             type="text"
-            placeholder="Mensagem bloqueada. Assine para conversar..."
+            placeholder={inputPlaceholder}
             className="w-full bg-zinc-700/50 text-zinc-400 rounded-full py-3 pl-4 pr-12 focus:outline-none focus:ring-2 focus:ring-rose-500/50"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
