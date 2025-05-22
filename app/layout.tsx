@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Perfil de Assinatura Premium",
   description: "Plataforma de assinatura com planos personalizados",
-    generator: 'v0.dev'
+    generator: 'Isabelle Privacy'
 }
 
 export default function RootLayout({

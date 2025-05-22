@@ -39,7 +39,7 @@ export default function ProfileContent() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <BlurredImage src="/images/preview1.jpg" alt="Preview content 1" blurAmount={10} />
+            <BlurredImage src="https://iili.io/3ZTyBXs.jpg" alt="Preview content 1" blurAmount={10} />
             <BlurredImage src="/images/preview2.jpg" alt="Preview content 2" blurAmount={8} />
             <BlurredImage src="/images/preview3.jpg" alt="Preview content 3" blurAmount={12} />
           </div>
