@@ -11,19 +11,19 @@ const CONTENT_CONFIG = {
   photos: [
     {
       id: "photo1",
-      src: "https://iili.io/3ZAm79I.jpg",
+      src: "https://iili.io/3Z5clHb.jpg",
       title: "Conteúdo exclusivo 1",
       blurAmount: 10,
     },
     {
       id: "photo2",
-      src: "https://iili.io/3ZAmR8N.jpg",
+      src: "https://iili.io/3Z51VWl.md.jpg",
       title: "Conteúdo exclusivo 2",
       blurAmount: 8,
     },
     {
       id: "photo3",
-      src: "/images/preview3.jpg",
+      src: "https://iili.io/3Z5Gltf.md.jpg",
       title: "Conteúdo exclusivo 3",
       blurAmount: 12,
     },

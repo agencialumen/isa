@@ -18,7 +18,7 @@ const PROFILE_CONFIG = {
   },
   images: {
     avatar: "https://iili.io/3ZAmAap.md.jpg",
-    cover: "https://iili.io/3ZTyBXs.jpg",
+    cover: "https://iili.io/3Z55mcG.jpg",
   },
 }
 
