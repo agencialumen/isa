@@ -38,14 +38,14 @@ const CONTENT_CONFIG = {
     },
     {
       id: "video2",
-      thumbnail: "/images/video-thumb2.jpg",
+      thumbnail: "https://iili.io/3Z5Gltf.md.jpg",
       title: "Vídeo exclusivo 2",
       duration: "05:12",
       blurAmount: 8,
     },
     {
       id: "video3",
-      thumbnail: "/images/video-thumb3.jpg",
+      thumbnail: "https://iili.io/3Z5clHb.jpg",
       title: "Vídeo exclusivo 3",
       duration: "02:45",
       blurAmount: 12,
