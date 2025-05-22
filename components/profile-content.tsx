@@ -11,7 +11,7 @@ const CONTENT_CONFIG = {
   photos: [
     {
       id: "photo1",
-      src: "https://iili.io/3Z5clHb.jpg",
+      src: "https://iili.io/3Z5kOGe.jpg",
       title: "Conteúdo exclusivo 1",
       blurAmount: 10,
     },
@@ -23,7 +23,7 @@ const CONTENT_CONFIG = {
     },
     {
       id: "photo3",
-      src: "https://iili.io/3Z5Gltf.md.jpg",
+      src: "https://iili.io/3Z5SI3u.md.jpg",
       title: "Conteúdo exclusivo 3",
       blurAmount: 12,
     },
