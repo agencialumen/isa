@@ -2,6 +2,7 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { useState } from "react"
 
 // Configuração centralizada dos planos - fácil de editar
 const SUBSCRIPTION_PLANS = [
@@ -55,8 +56,53 @@ const SUBSCRIPTION_PLANS = [
   },
 ]
 
-// Componente de card de assinatura
-const SubscriptionCard = ({ plan }) => {
+// Componente de card de assinatura para dispositivos móveis
+const MobileSubscriptionCard = ({ plan }) => {
+  const { id, title, price, popular, imageSrc, features, buttonText, buttonColor } = plan
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className={`bg-zinc-900 border ${popular ? "border-rose-500" : "border-zinc-800"} rounded-xl overflow-hidden relative mb-4`}
+    >
+      {popular && (
+        <div className="absolute top-0 right-0 bg-gradient-to-r from-rose-500 to-red-500 text-white text-xs px-3 py-1 rounded-bl-lg font-medium z-10">
+          POPULAR
+        </div>
+      )}
+
+      <div className="flex justify-between items-center p-4 border-b border-zinc-800">
+        <h3 className="text-xl font-bold text-white">{title}</h3>
+        <div className="text-right">
+          <p className="text-2xl font-bold text-white">{price}</p>
+          <p className="text-zinc-400 text-xs">por mês</p>
+        </div>
+      </div>
+
+      <div className="p-4">
+        <ul className="mb-4">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-start gap-2 mb-2">
+              <span className="text-rose-500 font-bold">✓</span>
+              <span className="text-zinc-300 text-sm">{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          className={`w-full py-3 rounded-lg ${buttonColor} text-white font-medium transition-all duration-300 text-sm`}
+        >
+          {buttonText}
+        </button>
+      </div>
+    </motion.div>
+  )
+}
+
+// Componente de card de assinatura para desktop
+const DesktopSubscriptionCard = ({ plan }) => {
   const { id, title, price, popular, imageSrc, features, buttonText, buttonColor } = plan
 
   return (
@@ -117,9 +163,11 @@ interface SubscriptionModalProps {
 }
 
 export default function SubscriptionModal({ open, onOpenChange }: SubscriptionModalProps) {
+  const [selectedPlan, setSelectedPlan] = useState(null)
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-zinc-900 border-zinc-800 p-0 sm:max-w-md md:max-w-3xl w-[95%] mx-auto">
+      <DialogContent className="bg-zinc-900 border-zinc-800 p-0 sm:max-w-md md:max-w-3xl w-[95%] mx-auto overflow-y-auto max-h-[90vh]">
         <div className="p-4">
           <h2 className="text-xl font-bold mb-2 bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent text-center">
             Escolha seu plano de assinatura
@@ -128,10 +176,17 @@ export default function SubscriptionModal({ open, onOpenChange }: SubscriptionMo
             Acesse conteúdo exclusivo com um dos nossos planos. Quanto mais premium o plano, mais benefícios você terá.
           </p>
 
-          {/* Layout responsivo para dispositivos móveis */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Layout para dispositivos móveis - visível apenas em telas pequenas */}
+          <div className="md:hidden">
             {SUBSCRIPTION_PLANS.map((plan) => (
-              <SubscriptionCard key={plan.id} plan={plan} />
+              <MobileSubscriptionCard key={plan.id} plan={plan} />
+            ))}
+          </div>
+
+          {/* Layout para desktop - visível apenas em telas médias e grandes */}
+          <div className="hidden md:grid md:grid-cols-3 gap-4">
+            {SUBSCRIPTION_PLANS.map((plan) => (
+              <DesktopSubscriptionCard key={plan.id} plan={plan} />
             ))}
           </div>
         </div>
