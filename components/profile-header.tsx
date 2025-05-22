@@ -10,7 +10,7 @@ import SubscriptionModal from "@/components/subscription-modal"
 const PROFILE_CONFIG = {
   username: "Isabelle Lua",
   handle: "@Belinha.ofc",
-  bio: "Bem-vindo ao meu mundo! Sou uma pessoa extraordinária e criativa. Estou sempre com energia positiva e pronta para compartilhar conteúdo exclusivo com você.",
+  bio: "💄 Sou putinha, mas gosto de ser tratada como princesa. 💦 Se for me chamar, vem com tesão e pix. 🔞 Meu conteúdo é pra quem sabe gozar com respeito 😘",
   stats: {
     posts: "127",
     photos: "38",
