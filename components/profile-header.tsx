@@ -6,15 +6,32 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import SubscriptionModal from "@/components/subscription-modal"
 
+// Configuração centralizada - fácil de editar
+const PROFILE_CONFIG = {
+  username: "Isabelle Lua",
+  handle: "@Belinha.ofc",
+  bio: "Bem-vindo ao meu mundo! Sou uma pessoa extraordinária e criativa. Estou sempre com energia positiva e pronta para compartilhar conteúdo exclusivo com você.",
+  stats: {
+    posts: "127",
+    photos: "38",
+    likes: "1.2K",
+  },
+  images: {
+    avatar: "https://iili.io/3ZTyBXs.jpg",
+    cover: "https://iili.io/3ZTyBXs.jpg",
+  },
+}
+
 export default function ProfileHeader() {
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false)
+  const { username, handle, bio, stats, images } = PROFILE_CONFIG
 
   return (
     <>
       <div className="relative">
-        <div className="h-64 w-full relative overflow-hidden rounded-b-xl">
+        <div className="h-48 sm:h-64 w-full relative overflow-hidden rounded-b-xl">
           <div className="absolute inset-0 bg-gradient-to-r from-rose-500/20 to-black/50 z-10" />
-          <Image src="/images/profile-cover.jpg" alt="Cover" fill className="object-cover" priority />
+          <Image src={images.cover || "/placeholder.svg"} alt="Cover" fill className="object-cover" priority />
         </div>
 
         <div className="flex justify-between items-start px-4 md:px-0">
@@ -32,45 +49,42 @@ export default function ProfileHeader() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 -mt-20 relative z-20 px-4 md:px-0">
+        <div className="flex flex-col md:flex-row gap-6 -mt-16 relative z-20 px-4 md:px-0">
           <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full border-4 border-zinc-900 overflow-hidden shadow-xl">
-            <Image src="/images/profile-avatar.jpg" alt="Profile" fill className="object-cover" />
+            <Image src={images.avatar || "/placeholder.svg"} alt="Profile" fill className="object-cover" />
           </div>
 
           <div className="flex-1 mt-4 md:mt-16">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl font-bold flex items-center gap-2">
-                  UserName
+                  {username}
                   <span className="bg-gradient-to-r from-rose-500 to-red-500 text-white text-xs px-2 py-1 rounded-full">
                     VIP
                   </span>
                 </h1>
-                <p className="text-zinc-400 text-sm">@username</p>
+                <p className="text-zinc-400 text-sm">{handle}</p>
               </div>
 
               <div className="flex items-center gap-4 text-sm">
                 <div className="text-center">
-                  <p className="font-bold">127</p>
+                  <p className="font-bold">{stats.posts}</p>
                   <p className="text-zinc-400">Posts</p>
                 </div>
                 <div className="h-10 w-px bg-zinc-800"></div>
                 <div className="text-center">
-                  <p className="font-bold">38</p>
+                  <p className="font-bold">{stats.photos}</p>
                   <p className="text-zinc-400">Fotos</p>
                 </div>
                 <div className="h-10 w-px bg-zinc-800"></div>
                 <div className="text-center">
-                  <p className="font-bold">1.2K</p>
+                  <p className="font-bold">{stats.likes}</p>
                   <p className="text-zinc-400">Likes</p>
                 </div>
               </div>
             </div>
 
-            <p className="mt-4 text-zinc-300 max-w-2xl">
-              Bem-vindo ao meu mundo! Sou uma pessoa extraordinária e criativa. Estou sempre com energia positiva e
-              pronta para compartilhar conteúdo exclusivo com você.
-            </p>
+            <p className="mt-4 text-zinc-300 max-w-2xl">{bio}</p>
 
             <div className="mt-4">
               <Button

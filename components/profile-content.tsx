@@ -1,3 +1,4 @@
+"use client"
 import { MessageCircle, ImageIcon, Film } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
@@ -5,7 +6,56 @@ import { BlurredImage } from "@/components/blurred-image"
 import { BlurredVideo } from "@/components/blurred-video"
 import { ChatPreview } from "@/components/chat-preview"
 
+// Configuração centralizada - fácil de editar
+const CONTENT_CONFIG = {
+  photos: [
+    {
+      id: "photo1",
+      src: "/images/preview1.jpg",
+      title: "Conteúdo exclusivo 1",
+      blurAmount: 10,
+    },
+    {
+      id: "photo2",
+      src: "/images/preview2.jpg",
+      title: "Conteúdo exclusivo 2",
+      blurAmount: 8,
+    },
+    {
+      id: "photo3",
+      src: "/images/preview3.jpg",
+      title: "Conteúdo exclusivo 3",
+      blurAmount: 12,
+    },
+  ],
+  videos: [
+    {
+      id: "video1",
+      thumbnail: "/images/video-thumb1.jpg",
+      title: "Vídeo exclusivo 1",
+      duration: "03:24",
+      blurAmount: 10,
+    },
+    {
+      id: "video2",
+      thumbnail: "/images/video-thumb2.jpg",
+      title: "Vídeo exclusivo 2",
+      duration: "05:12",
+      blurAmount: 8,
+    },
+    {
+      id: "video3",
+      thumbnail: "/images/video-thumb3.jpg",
+      title: "Vídeo exclusivo 3",
+      duration: "02:45",
+      blurAmount: 12,
+    },
+  ],
+}
+
 export default function ProfileContent() {
+  const { photos, videos } = CONTENT_CONFIG
+
   return (
     <div>
       <Tabs defaultValue="photos" className="w-full">
@@ -38,10 +88,10 @@ export default function ProfileContent() {
             Prévia do conteúdo exclusivo
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <BlurredImage src="https://iili.io/3ZTyBXs.jpg" alt="Preview content 1" blurAmount={10} />
-            <BlurredImage src="/images/preview2.jpg" alt="Preview content 2" blurAmount={8} />
-            <BlurredImage src="/images/preview3.jpg" alt="Preview content 3" blurAmount={12} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {photos.map((photo) => (
+              <BlurredImage key={photo.id} src={photo.src} alt={photo.title} blurAmount={photo.blurAmount} />
+            ))}
           </div>
 
           <div className="mt-8 text-center">
@@ -59,25 +109,16 @@ export default function ProfileContent() {
             Vídeos exclusivos
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <BlurredVideo
-              thumbnail="/images/video-thumb1.jpg"
-              duration="03:24"
-              title="Vídeo exclusivo 1"
-              blurAmount={10}
-            />
-            <BlurredVideo
-              thumbnail="/images/video-thumb2.jpg"
-              duration="05:12"
-              title="Vídeo exclusivo 2"
-              blurAmount={8}
-            />
-            <BlurredVideo
-              thumbnail="/images/video-thumb3.jpg"
-              duration="02:45"
-              title="Vídeo exclusivo 3"
-              blurAmount={12}
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {videos.map((video) => (
+              <BlurredVideo
+                key={video.id}
+                thumbnail={video.thumbnail}
+                duration={video.duration}
+                title={video.title}
+                blurAmount={video.blurAmount}
+              />
+            ))}
           </div>
 
           <div className="mt-8 text-center">
