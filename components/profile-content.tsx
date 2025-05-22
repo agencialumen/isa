@@ -31,7 +31,7 @@ const CONTENT_CONFIG = {
   videos: [
     {
       id: "video1",
-      thumbnail: "/images/video-thumb1.jpg",
+      thumbnail: "https://iili.io/3ZRRKuI.md.jpg",
       title: "Vídeo exclusivo 1",
       duration: "03:24",
       blurAmount: 10,
