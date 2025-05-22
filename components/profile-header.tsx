@@ -12,7 +12,7 @@ const PROFILE_CONFIG = {
   handle: "@Belinha.ofc",
   bio: "💄 Sou putinha, mas gosto de ser tratada como princesa. | 💦 Se for me chamar, vem com tesão e pix.",
   stats: {
-    posts: "258",
+    posts: "347",
     photos: "224",
     likes: "68.2K",
   },
