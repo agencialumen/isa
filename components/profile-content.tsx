@@ -11,7 +11,7 @@ const CONTENT_CONFIG = {
   photos: [
     {
       id: "photo1",
-      src: "/images/preview1.jpg",
+      src: "https://iili.io/3ZTyBXs.jpg",
       title: "Conteúdo exclusivo 1",
       blurAmount: 10,
     },

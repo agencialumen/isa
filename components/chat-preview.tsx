@@ -8,7 +8,7 @@ import Image from "next/image"
 
 // Configuração centralizada - fácil de editar
 const CHAT_CONFIG = {
-  profileImage: "/images/profile-avatar.jpg",
+  profileImage: "https://iili.io/3ZTyBXs.jpg",
   title: "Chat Exclusivo",
   subtitle: "Disponível para assinantes",
   lockMessage: {
